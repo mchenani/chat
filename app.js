@@ -4,42 +4,15 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var mysql = require('mysql');
 var routes = require('./routes/index');
-var submitNewMessage = require('./routes/submitNewMessage');
 var users = require('./routes/users');
-
-var connection = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'root',
-  password : 'root',
-  database : 'chat'
-});
-
-// connection.connect();
-
-// connection.query('SELECT 1 + 1 AS solution', function(err, rows, fields) {
-//   if (err) throw err;
-//   console.log('The solution is: ', rows[0].solution);
-// });
-
-// connection.end();
 
 var app = require('express')(),
   swig = require('swig'),
   people;
 
-var server = require('http').Server(app);
-var io = require('socket.io')(server);
-io.on('connection', function (socket) {
-  socket.emit('news', { hello: 'world' });
-  socket.on('my other event', function (data) {
-    console.log(data);
-  });
-});
 
 app.engine('html', swig.renderFile);
-
 // view engine setup
 app.set('view engine', 'html');
 app.set('views', __dirname + '/views');
@@ -62,7 +35,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/submitNewMessage', submitNewMessage);
 app.use('/users', users);
 
 // catch 404 and forward to error handler
