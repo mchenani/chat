@@ -1,6 +1,18 @@
 {% include 'header.html' %}
+<style type="text/css">
+	input#form-message {
+	  width: 82%;
+	}
+	.form-group {
+	  width: 100%;
+	}
+</style>
 <div class="col-md-4 col-md-offset-4">
-	<ul id="chat"></ul>
+	<ul id="chat">
+		{% for value in data %}
+			<li>{{value.username}}: {{value.message}}</li>
+		{% endfor %}
+	</ul>
 	<form id="form-new-message" class="form-inline" action="/" method="post">
 		<div class="form-group">
 			<input id="form-message" class="form-control" type="text" required="required" name="message" placeholder="New Message...">
