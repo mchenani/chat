@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.12deb2
+-- version 4.0.10deb1
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 08, 2015 at 06:40 AM
--- Server version: 5.6.24-0ubuntu2
--- PHP Version: 5.6.4-4ubuntu6.3
+-- Generation Time: Oct 08, 2015 at 09:13 AM
+-- Server version: 5.5.44-0ubuntu0.14.04.1
+-- PHP Version: 5.5.9-1ubuntu4.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -27,10 +27,12 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `messages` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `message` text COLLATE utf8_bin NOT NULL,
-  `username` varchar(31) COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  `username` varchar(31) COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=21 ;
 
 --
 -- Dumping data for table `messages`
@@ -51,28 +53,12 @@ INSERT INTO `messages` (`id`, `message`, `username`) VALUES
 (12, 'Hello', '1'),
 (13, 'How are u?', '1'),
 (14, 'Hello', '1'),
-(15, 'Kiss u', '1'),
-(16, 'W', '1');
+(16, 'W', '1'),
+(17, 'S', '1'),
+(18, 'sasa', '1'),
+(19, 'sadsada', '1'),
+(20, 'Hi', '1');
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `messages`
---
-ALTER TABLE `messages`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `id` (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `messages`
---
-ALTER TABLE `messages`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
