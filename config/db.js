@@ -1,12 +1,9 @@
-module.exports = function () {
+module.exports = function (app) {
 	var orm = require('orm');
-	var db = orm.connect('mysql://root:root@localhost/chat',function(err,db){
-		if (err) throw err;
-		var Messages = db.define('messages', {
-			message : String,
-			username: String
-		});
-		
-    });
-	return db;
+	var Messages = require('../models/Messages');	
+	app.use(orm.express("mysql://root:root@localhost/chat", {
+	    define: function (db, models) {
+	        Messages(db,models);
+	    }
+	}));
 }
