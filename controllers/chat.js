@@ -1,6 +1,7 @@
 
 module.exports = function (server,req,res) {
 	// Web Socket
+	var winston = require('winston');
 	var io = require('socket.io').listen(server);
 	io.sockets.on('connection',function(socket){  
 	  socket.on('send message',function(data){
@@ -13,7 +14,8 @@ module.exports = function (server,req,res) {
 		], function (err, items) {
 		   
 		});
-	  	console.log('Message: '+data);
+		winston.level = 'debug';
+		winston.log('debug', 'Username:'+data.username+ ' Message: '+data.message);
 	    io.sockets.emit('new message',data);
 	  });
 	});

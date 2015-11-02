@@ -15,3 +15,9 @@ input#select-username-input {
 .form-group {
   width: 100%;
 }
+ul#chat {
+  height: 300px;
+  overflow-y: scroll;
+  width: 98%;
+  padding-left: 25px;
+}

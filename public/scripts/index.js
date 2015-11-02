@@ -25,4 +25,6 @@ socket.on('new message',function(data){
 	if (data.username_id % 6 == 5){className = 'warning';};
 	if (data.username_id % 6 == 6){className = 'danger';};
 	$('#chat').append('<li><span class="label label-'+className+'">'+data.username+'</span>: '+data.message+'</li>')
+	var objDiv = document.getElementById("chat");
+	objDiv.scrollTop = objDiv.scrollHeight;
 });
