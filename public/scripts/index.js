@@ -14,6 +14,7 @@ $('#select-username').submit(function(event){
 		$('#start').slideUp();
 		$('#chat-room').slideDown();
 	}
+	emojify.run(document.getElementById('chat'))
 });
 
 socket.on('new message',function(data){
@@ -27,4 +28,5 @@ socket.on('new message',function(data){
 	$('#chat').append('<li><span class="label label-'+className+'">'+data.username+'</span>: '+data.message+'</li>')
 	var objDiv = document.getElementById("chat");
 	objDiv.scrollTop = objDiv.scrollHeight;
+	emojify.run(document.getElementById('chat'))
 });

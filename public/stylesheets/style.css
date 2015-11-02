@@ -21,3 +21,9 @@ ul#chat {
   width: 98%;
   padding-left: 25px;
 }
+.emoji {
+    width: 1.5em;
+    height: 1.5em;
+    display: inline-block;
+    margin-bottom: -0.25em;
+}
