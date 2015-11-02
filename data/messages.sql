@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 11, 2015 at 11:36 AM
--- Server version: 5.5.44-0ubuntu0.14.04.1
--- PHP Version: 5.5.9-1ubuntu4.11
+-- Generation Time: Nov 02, 2015 at 01:38 PM
+-- Server version: 5.5.46-0ubuntu0.14.04.2
+-- PHP Version: 5.5.9-1ubuntu4.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -30,35 +30,57 @@ CREATE TABLE IF NOT EXISTS `messages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `message` text COLLATE utf8_bin NOT NULL,
   `username` varchar(31) COLLATE utf8_bin NOT NULL,
+  `username_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=22 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=43 ;
 
 --
 -- Dumping data for table `messages`
 --
 
-INSERT INTO `messages` (`id`, `message`, `username`) VALUES
-(1, '2', '2'),
-(2, '2', '2'),
-(3, 'o', '1'),
-(4, 'Hello, I am a message', 'EhsanGazar'),
-(5, 'second', '1'),
-(6, 'first', '1'),
-(7, 'second', '1'),
-(8, 'third', '1'),
-(9, 'yes', '1'),
-(10, 'A', '1'),
-(11, 'Hi Hitler', '1'),
-(12, 'Hello', '1'),
-(13, 'How are u?', '1'),
-(14, 'Hello', '1'),
-(16, 'W', '1'),
-(17, 'S', '1'),
-(18, 'sasa', '1'),
-(19, 'sadsada', '1'),
-(20, 'Last Message', '1'),
-(21, 'Second Last', 'Doe');
+INSERT INTO `messages` (`id`, `message`, `username`, `username_id`) VALUES
+(2, 'Hi ', 'eadomestic', 4),
+(3, 'Test', 'ehsangazar', 6),
+(4, 'Hi', 'Another1', 5),
+(5, 'Test2', 'A2', 1),
+(6, 'Hi 2', 'A3', 1),
+(7, 'Yes', 'A4', 5),
+(8, 'sasa', 'A4', 5),
+(9, 'saas', 'Default', 6),
+(10, 'gdfgdgdf', 'A4', 5),
+(11, 'Hi', 'me', 2),
+(12, 'assssssssssssssssssssssssdasd', 'fazeli', 4),
+(13, 'dasdasd', 'fazeli', 4),
+(14, 'asdsd', 'fazeli', 4),
+(15, 'dasdsd', 'fazeli', 4),
+(16, 'sdasd', 'fazeli', 4),
+(17, 'asdasd', 'fazeli', 4),
+(18, 'sdasd', 'fazeli', 4),
+(19, 'dsd', 'fazeli', 4),
+(20, 'sds', 'fazeli', 4),
+(21, 'gft54423434', 'fazeli', 4),
+(22, 'sadsadsa', 'me', 2),
+(23, 'shadusahdsa', 'me', 2),
+(24, 'sjad', 'me', 2),
+(25, 'sjaidas', 'me', 2),
+(26, 'iosjaodjaisdjsa', 'me', 2),
+(27, 'kh', 'narges', 4),
+(28, 'salam', 'narges', 4),
+(29, 'nbm bnmbnmhjg', 'me', 2),
+(30, 'che khosh rang', 'narges', 4),
+(31, 'ghjghjhg', 'me', 2),
+(32, '\\gfhfgf', 'me', 2),
+(33, 'fghgfgfgf', 'me', 2),
+(34, 'ba socket?', 'narges', 4),
+(35, 'Hi ', 'ehsangazar', 2),
+(36, 'hiiiii', 'narges', 4),
+(37, ':D', 'narges', 4),
+(38, 'how r u?', 'ehsangazar', 2),
+(39, 'i am fine', 'narges', 4),
+(40, 'sjdknfkdsl', 'ehsangazar', 2),
+(41, 'gmdflkmsglkdf', 'ehsangazar', 2),
+(42, 'dmfklgmdflkg', 'ehsangazar', 2);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

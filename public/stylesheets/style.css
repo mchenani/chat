@@ -6,3 +6,12 @@ body {
 a {
   color: #00B7FF;
 }
+input#form-message {
+  width: 82%;
+}
+input#select-username-input {
+  width: 82%;
+}
+.form-group {
+  width: 100%;
+}

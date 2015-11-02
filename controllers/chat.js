@@ -6,8 +6,9 @@ module.exports = function (server,req,res) {
 	  socket.on('send message',function(data){
 	  	req.models.Messages.create([
 		    {
-		        message: data,
-		        username: "Test",
+		        message: data.message,
+		        username: data.username,
+		        username_id: data.username_id,
 		    }
 		], function (err, items) {
 		   
