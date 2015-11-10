@@ -1,11 +1,4 @@
 module.exports = function (app) {
-	// var orm = require('orm');
-	// var Messages = require('../models/Messages');	
-	// app.use(orm.express("mysql://root:root@localhost/chat", {
-	//     define: function (db, models) {
-	//         Messages(db,models);
-	//     }
-	// }));
 
 	var mongoose = require('mongoose');
 	mongoose.connect('mongodb://localhost/chat');
@@ -14,18 +7,9 @@ module.exports = function (app) {
 	db.once('open', function (callback) {
 		console.log('Database Connected');
 	});
+	var models = {};
+	models.MessagesModel = mongoose.model('Messages',mongoose.Schema(require('../models/Messages')()));
+	models.UsersModel = mongoose.model('Users', mongoose.Schema(require('../models/Users')()));
 	
-	var Messages = mongoose.Schema({
-	    message : String,
-		user_id: Number,		
-	});;
-	
-	// var newMessage = new Messages({ message: 'fluffy',user_id:10 });
-
-	models.Messages = mongoose.model('Messages', Messages);
-
-	newMessage = new models.Messages({ message: 'fluffy',user_id:10 });
-	newMessage.save(function (err, fluffy) {
-	  if (err) return console.error(err);
-	});
+	return models;
 }

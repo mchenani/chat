@@ -1,6 +1,6 @@
 module.exports = function (mangoose) {
-	return mongoose.Schema({
+	return {
 	    message : String,
-		user_id: Number,		
-	});
+		email: String,		
+	};
 }

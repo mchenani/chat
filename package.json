@@ -11,7 +11,8 @@
     "swig": "~1.4.2",
     "require-dir": "~0.3.0",
     "mongodb": "~2.0.48",
-    "mongoose": "~4.2.4"
+    "mongoose": "~4.2.4",
+    "body-parser": "~1.14.1"
   },
   "devDependencies": {},
   "scripts": {

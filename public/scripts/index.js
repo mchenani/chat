@@ -4,9 +4,9 @@ $(document).ready(function(){
 	var username = "Default";
 	var username_id = Math.floor((Math.random() * 6) + 1);
 	$('[data-toggle="tooltip"]').tooltip()
-	$('#form-new-message').submit(function(event){
+	$('#form-new-data').submit(function(event){
 		event.preventDefault();
-		socket.emit('new-message',{'message': $('#form-message').val(), 'username': username, 'username_id': username_id });
+		socket.emit('new-data',{'message': $('#form-message').val(), 'username': username});
 		$('#form-message').val('');
 	});
 	$('#select-username').submit(function(event){
@@ -14,10 +14,16 @@ $(document).ready(function(){
 		username = $('#select-username-input').val();
 		if (username != ''){
 			$('#chat').css('height',window.innerHeight- 150);
-			$('#start').slideUp();
-			$('#chat-room').slideDown();	
-			socket.emit('all-users',{'username': username});
-			$('#form-message').val('');		
+			$.ajax({
+				url: "/register",
+				method: "POST", 
+				data: {username:username},
+			}).done(function(data){
+	    	    $('#start').slideUp();
+				$('#chat-room').slideDown();	
+				$('#form-message').val('');	
+				socket.emit('new-data',{'username':username});
+		    });
 		}
 		for (var i = 1; i <= $('#chat li').length; i++) {
 			imageSrc = md5($('#chat li:nth-child('+i+')').children('img').attr('username').toLowerCase());
@@ -28,12 +34,14 @@ $(document).ready(function(){
 		objDiv.scrollTop = objDiv.scrollHeight;
 	});
 
-	socket.on('new-message',function(data){
-		var className = "default";
-		var src = 'http://www.gravatar.com/avatar/' + md5(data.username.toLowerCase()) +'?s=30';		
-		$('#chat').append('<li><img data-toggle="tooltip" data-placement="left" title="'+data.username+'" title="'+data.username+'" class="image" src="'+src+'" />  '+data.message+'</li>')
-		var objDiv = document.getElementById("chat");
-		objDiv.scrollTop = objDiv.scrollHeight;
-		emojify.run(document.getElementById('chat'))
+	socket.on('new-data',function(data){
+		if (typeof data.message != 'undefined'){
+			var className = "default";
+			var src = 'http://www.gravatar.com/avatar/' + md5(data.username.toLowerCase()) +'?s=30';		
+			$('#chat').append('<li><img data-toggle="tooltip" data-placement="left" title="'+data.username+'" title="'+data.username+'" class="image" src="'+src+'" />  '+data.message+'</li>')
+			var objDiv = document.getElementById("chat");
+			objDiv.scrollTop = objDiv.scrollHeight;
+			emojify.run(document.getElementById('chat'))
+		}
 	});
 });
