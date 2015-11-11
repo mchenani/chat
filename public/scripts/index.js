@@ -6,7 +6,7 @@ $(document).ready(function(){
 	$('[data-toggle="tooltip"]').tooltip()
 	$('#form-new-data').submit(function(event){
 		event.preventDefault();
-		socket.emit('new-data',{'message': $('#form-message').val(), 'username': username});
+		socket.emit('new-data',{'message': $('#form-message').val(), 'email': username});
 		$('#form-message').val('');
 	});
 	$('#select-username').submit(function(event){
@@ -22,7 +22,8 @@ $(document).ready(function(){
 	    	    $('#start').slideUp();
 				$('#chat-room').slideDown();	
 				$('#form-message').val('');	
-				socket.emit('new-data',{'username':username});
+				$('#all-users').children('span').html(data.countUsers)
+				socket.emit('new-data',{'email':username});
 		    });
 		}
 		for (var i = 1; i <= $('#chat li').length; i++) {
@@ -36,12 +37,23 @@ $(document).ready(function(){
 
 	socket.on('new-data',function(data){
 		if (typeof data.message != 'undefined'){
+			console.log(data);
 			var className = "default";
-			var src = 'http://www.gravatar.com/avatar/' + md5(data.username.toLowerCase()) +'?s=30';		
-			$('#chat').append('<li><img data-toggle="tooltip" data-placement="left" title="'+data.username+'" title="'+data.username+'" class="image" src="'+src+'" />  '+data.message+'</li>')
+			var src = 'http://www.gravatar.com/avatar/' + md5(data.email.toLowerCase()) +'?s=30';		
+			$('#chat').append('<li><img data-toggle="tooltip" data-placement="left" title="'+data.email+'" title="'+data.email+'" class="image" src="'+src+'" />  '+data.message+'</li>')
 			var objDiv = document.getElementById("chat");
 			objDiv.scrollTop = objDiv.scrollHeight;
 			emojify.run(document.getElementById('chat'))
+		}
+		if (typeof data.onlineUsers != 'undefined'){
+			var counter = 0;
+			$('#users-list').html('');
+			$.each(data.onlineUsers,function(index, value){
+				var src = 'http://www.gravatar.com/avatar/' + md5(value.email.toLowerCase()) +'?s=30';		
+			    $('#users-list').append('<li><img data-toggle="tooltip" data-placement="left" title="'+value.email+'" title="'+data.email+'" class="image" src="'+src+'" /></li>')
+			    counter++;
+			});
+			$('#online-users').children('span').html(counter);
 		}
 	});
 });

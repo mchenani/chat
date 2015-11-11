@@ -1,6 +1,9 @@
-module.exports = function (req,res) {
-	// req.models.Messages.find({},{limit:20,order:['id','Z']}, function(err, messages) {		
-	    // res.render('index',{responds:messages.reverse()});
-	// });
-	res.render('index',{responds:{}});
+module.exports = function (server,req,res,models) {
+	models.MessagesModel.find({}).limit(20).exec(function (err, responds) {
+	  if (err){
+	  	return handleError(err);
+	  }else{
+	  	res.render('index',{responds:responds});	
+	  }
+	})
 }

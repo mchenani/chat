@@ -26,6 +26,13 @@ module.exports = function (server,req,res,models) {
 	  	}
 	  }
 	})
-	
-	res.send({status:status});
+	var countUsers = 0;
+	models.UsersModel.find({}).exec(function (err, responds) {
+	  if (err){
+	  	return handleError(err);
+	  }else{	  	
+	  	countUsers = responds.length;
+	  	res.send({status:status,countUsers:countUsers});
+	  }
+	})	
 }

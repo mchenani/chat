@@ -18,7 +18,7 @@
 		<ul id="chat">
 			{% for value in responds %}	
 				<li>
-					<img data-toggle="tooltip" data-placement="left" title="{{value.username}}" username="{{value.username}}" title="{{value.username}}" class="image" src="" />
+					<img data-toggle="tooltip" data-placement="left" title="{{value.email}}" username="{{value.email}}" title="{{value.email}}" class="image" src="" />
 					{{value.message}}
 				</li>
 			{% endfor %}
@@ -32,7 +32,14 @@
 	</div>
 </div>
 <div class="col-md-4">
-	sndsajdjaiojasiojiosa
+	<ul>
+		<li id="online-users">
+			Number of Online Users: <span></span>
+		</li>
+		<li id="all-users">
+			Number of Users: <span></span>
+		</li>
+	</ul>
 </div>
 <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
