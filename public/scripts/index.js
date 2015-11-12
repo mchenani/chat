@@ -24,6 +24,8 @@ $(document).ready(function(){
 				$('#form-message').val('');	
 				$('#all-users').children('span').html(data.countUsers)
 				socket.emit('new-data',{'email':username});
+				$('#users .hide').slideDown().removeClass('hide');
+				$('#details .hide').slideDown().removeClass('hide');
 		    });
 		}
 		for (var i = 1; i <= $('#chat li').length; i++) {

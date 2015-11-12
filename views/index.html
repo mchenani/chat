@@ -1,11 +1,13 @@
 {% include 'header.html' %}
 <div id="users" class="col-md-4">
-	<h4>Online Users:</h4>
-	<ul id="users-list">
+	<div class="hide">
+		<h4>Online Users:</h4>
+		<ul id="users-list">
 
-	</ul>
+		</ul>
+	</div>
 </div>
-<div class="col-md-4">
+<div id="centerbox" class="col-md-4">
 	<div id="start">
 		<form id="select-username" class="form-inline" method="post">
 			<div class="form-group">
@@ -31,15 +33,17 @@
 		</form>
 	</div>
 </div>
-<div class="col-md-4">
-	<ul>
-		<li id="online-users">
-			Number of Online Users: <span></span>
-		</li>
-		<li id="all-users">
-			Number of Users: <span></span>
-		</li>
-	</ul>
+<div id="details" class="col-md-4">
+	<div class="hide">
+		<ul>
+			<li id="online-users">
+				Number of Online Users: <span></span>
+			</li>
+			<li id="all-users">
+				Number of Users: <span></span>
+			</li>
+		</ul>
+	</div>
 </div>
 <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
